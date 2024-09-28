@@ -4,6 +4,18 @@ const path = require("path");
 
 module.exports = {
   entry: "./src/js/main.js",
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, "src/css"), // Only include CSS from src/css
+        use: [
+          "style-loader", // Injects styles into the DOM
+          "css-loader", // Turns CSS into CommonJS
+        ],
+      },
+    ],
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
